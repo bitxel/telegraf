@@ -10,6 +10,8 @@ import (
 	"sync"
 	"time"
 
+	"regexp"
+
 	"github.com/influxdata/telegraf"
 	"github.com/influxdata/telegraf/plugins/inputs"
 	"github.com/pkg/errors"
@@ -152,7 +154,17 @@ func (r *RedisMQ) gatherQueue(queue Queue, acc telegraf.Accumulator) error {
 
 	for _, key := range queue.Keys {
 		c.Write([]byte(fmt.Sprintf("LLEN %s\r\n", key)))
-		tags := map[string]string{"key": key, "db": strconv.Itoa(queue.DB)}
+
+		real_key := key
+		re := regexp.MustCompile("_[0-9]+$")
+		if re.FindStringIndex(key) != nil {
+			idx := strings.LastIndex(key, "_")
+			if idx != -1 {
+				key = key[:idx]
+			}
+		}
+
+		tags := map[string]string{"key": key, "db": strconv.Itoa(queue.DB), "real_key": real_key, "redis_addr": u.Host}
 		gatherQueueOutput(rdr, acc, tags)
 	}
 
