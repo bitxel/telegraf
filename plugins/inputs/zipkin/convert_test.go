@@ -108,27 +108,27 @@ func TestLineProtocolConverter_Record(t *testing.T) {
 				},
 			},
 			want: []testutil.Metric{
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"id":           "8090652509916334619",
 						"parent_id":    "22964302721410078",
 						"trace_id":     "2505404965370368069",
 						"service_name": "trivial",
-						"name":         "Child",
+						"name":         "child",
 					},
 					Fields: map[string]interface{}{
 						"duration_ns": (time.Duration(53106) * time.Microsecond).Nanoseconds(),
 					},
 					Time: time.Unix(0, 1498688360851331000).UTC(),
 				},
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"id":             "8090652509916334619",
 						"parent_id":      "22964302721410078",
 						"trace_id":       "2505404965370368069",
-						"name":           "Child",
+						"name":           "child",
 						"service_name":   "trivial",
 						"annotation":     "dHJpdmlhbA==",
 						"endpoint_host":  "2130706433:0",
@@ -139,27 +139,27 @@ func TestLineProtocolConverter_Record(t *testing.T) {
 					},
 					Time: time.Unix(0, 1498688360851331000).UTC(),
 				},
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"id":           "103618986556047333",
 						"parent_id":    "22964302721410078",
 						"trace_id":     "2505404965370368069",
 						"service_name": "trivial",
-						"name":         "Child",
+						"name":         "child",
 					},
 					Fields: map[string]interface{}{
 						"duration_ns": (time.Duration(50410) * time.Microsecond).Nanoseconds(),
 					},
 					Time: time.Unix(0, 1498688360904552000).UTC(),
 				},
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"id":             "103618986556047333",
 						"parent_id":      "22964302721410078",
 						"trace_id":       "2505404965370368069",
-						"name":           "Child",
+						"name":           "child",
 						"service_name":   "trivial",
 						"annotation":     "dHJpdmlhbA==",
 						"endpoint_host":  "2130706433:0",
@@ -170,21 +170,21 @@ func TestLineProtocolConverter_Record(t *testing.T) {
 					},
 					Time: time.Unix(0, 1498688360904552000).UTC(),
 				},
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"id":           "22964302721410078",
 						"parent_id":    "22964302721410078",
 						"trace_id":     "2505404965370368069",
 						"service_name": "trivial",
-						"name":         "Parent",
+						"name":         "parent",
 					},
 					Fields: map[string]interface{}{
 						"duration_ns": (time.Duration(103680) * time.Microsecond).Nanoseconds(),
 					},
 					Time: time.Unix(0, 1498688360851318000).UTC(),
 				},
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"service_name":  "trivial",
@@ -193,14 +193,14 @@ func TestLineProtocolConverter_Record(t *testing.T) {
 						"id":            "22964302721410078",
 						"parent_id":     "22964302721410078",
 						"trace_id":      "2505404965370368069",
-						"name":          "Parent",
+						"name":          "parent",
 					},
 					Fields: map[string]interface{}{
 						"duration_ns": (time.Duration(103680) * time.Microsecond).Nanoseconds(),
 					},
 					Time: time.Unix(0, 1498688360851318000).UTC(),
 				},
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"service_name":  "trivial",
@@ -209,19 +209,19 @@ func TestLineProtocolConverter_Record(t *testing.T) {
 						"id":            "22964302721410078",
 						"parent_id":     "22964302721410078",
 						"trace_id":      "2505404965370368069",
-						"name":          "Parent",
+						"name":          "parent",
 					},
 					Fields: map[string]interface{}{
 						"duration_ns": (time.Duration(103680) * time.Microsecond).Nanoseconds(),
 					},
 					Time: time.Unix(0, 1498688360851318000).UTC(),
 				},
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"parent_id":     "22964302721410078",
 						"trace_id":      "2505404965370368069",
-						"name":          "Parent",
+						"name":          "parent",
 						"service_name":  "trivial",
 						"annotation":    "A Log",
 						"endpoint_host": "2130706433:0",
@@ -232,7 +232,7 @@ func TestLineProtocolConverter_Record(t *testing.T) {
 					},
 					Time: time.Unix(0, 1498688360851318000).UTC(),
 				},
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"trace_id":       "2505404965370368069",
@@ -241,7 +241,7 @@ func TestLineProtocolConverter_Record(t *testing.T) {
 						"annotation_key": "lc",
 						"id":             "22964302721410078",
 						"parent_id":      "22964302721410078",
-						"name":           "Parent",
+						"name":           "parent",
 						"endpoint_host":  "2130706433:0",
 					},
 					Fields: map[string]interface{}{
@@ -283,7 +283,7 @@ func TestLineProtocolConverter_Record(t *testing.T) {
 				},
 			},
 			want: []testutil.Metric{
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"id":           "6802735349851856000",
@@ -297,7 +297,7 @@ func TestLineProtocolConverter_Record(t *testing.T) {
 					},
 					Time: time.Unix(1, 0).UTC(),
 				},
-				testutil.Metric{
+				{
 					Measurement: "zipkin",
 					Tags: map[string]string{
 						"annotation":    "cs",
